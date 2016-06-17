@@ -9,6 +9,8 @@
     <!--spring mvc controller must implement 'AbstractController.class'-->
     <bean id="HandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 
+    <bean name="/welcome.html" class="src.org.kolyan.hellocontroller.HelloController"></bean>
+
     <!--Define VIEW path in SPRING MVC -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">

@@ -1,6 +1,7 @@
 package src.org.kolyan.hellocontroller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,11 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class HelloController {
-    @RequestMapping("/welcome")
-    protected ModelAndView hellowWorld() {
+    // {} -> in @RequestMapping means that param in brakes is variable
+    // in url "http://localhost:8080/spring_mvc/welcome/ru/unknowName"
+    // "ru" is variable {countryName}
+    // "unknowName" is variable {userName}
+    @RequestMapping("/welcome/{countryName}/{userName}")
+    protected ModelAndView hellowWorld(@PathVariable("countryName") String countryName, @PathVariable("userName") String name) {
         // modelAndView -> define page
         ModelAndView modelAndView = new ModelAndView("HelloPage");
-        modelAndView.addObject("welcomeMessage", "He User, welcome to the first Spring MVC Application");
+        modelAndView.addObject("userName", "Hello!  " + name);
+        modelAndView.addObject("countryName", "from  " + countryName);
 
         return modelAndView;
     }

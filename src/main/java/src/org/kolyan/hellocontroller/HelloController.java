@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 /**
  * class witch is the controller in Spring MVC must extend 'AbstractController.class'
  * or using annotation '@Controller'
@@ -16,11 +18,13 @@ public class HelloController {
     // "ru" is variable {countryName}
     // "unknowName" is variable {userName}
     @RequestMapping("/welcome/{countryName}/{userName}")
-    protected ModelAndView hellowWorld(@PathVariable("countryName") String countryName, @PathVariable("userName") String name) {
+    protected ModelAndView hellowWorld(@PathVariable Map<String, String> pathVars) {
         // modelAndView -> define page
+        String country = pathVars.get("countryName");
+        String name = pathVars.get("userName");
         ModelAndView modelAndView = new ModelAndView("HelloPage");
         modelAndView.addObject("userName", "Hello!  " + name);
-        modelAndView.addObject("countryName", "from  " + countryName);
+        modelAndView.addObject("countryName", "from  " + country);
 
         return modelAndView;
     }

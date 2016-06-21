@@ -1,36 +1,31 @@
 package src.org.kolyan.hellocontroller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 /**
- * class witch it the controller in Spring MVC must extend 'AbstractController.class'
+ * class witch is the controller in Spring MVC must extend 'AbstractController.class'
  * or using annotation '@Controller'
  */
-// define entity using annotation
 @Controller
-//@RequestMapping -> annotation  at class level mean that mapping of class  is concatenated with mapping of method
-@RequestMapping("/greeting")
 public class HelloController {
-
-    // define mapping using annotation
-    // url "http://localhost:8080/spring_mvc/greeting/welcome"
-    @RequestMapping("/welcome")
-    protected ModelAndView hellowWorld() {
+    // {} -> in @RequestMapping means that param in brakes is variable
+    // in url "http://localhost:8080/spring_mvc/welcome/ru/unknowName"
+    // "ru" is variable {countryName}
+    // "unknowName" is variable {userName}
+    @RequestMapping("/welcome/{countryName}/{userName}")
+    protected ModelAndView hellowWorld(@PathVariable Map<String, String> pathVars) {
         // modelAndView -> define page
+        String country = pathVars.get("countryName");
+        String name = pathVars.get("userName");
         ModelAndView modelAndView = new ModelAndView("HelloPage");
-        modelAndView.addObject("welcomeMessage", "He User, welcome to the first Spring MVC Application");
-        return modelAndView;
-    }
+        modelAndView.addObject("userName", "Hello!  " + name);
+        modelAndView.addObject("countryName", "from  " + country);
 
-    // define mapping using annotation
-    // url "http://localhost:8080/spring_mvc/greeting/hi"
-    @RequestMapping("/hi")
-    protected ModelAndView hiWorld() {
-        // modelAndView -> define page
-        ModelAndView modelAndView = new ModelAndView("HelloPage");
-        modelAndView.addObject("welcomeMessage", "HI!!!");
         return modelAndView;
     }
 }

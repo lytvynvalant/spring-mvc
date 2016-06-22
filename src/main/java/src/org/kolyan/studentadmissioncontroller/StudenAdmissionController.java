@@ -1,4 +1,4 @@
-package src.org.kolyan.hellocontroller;
+package src.org.kolyan.studentadmissioncontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

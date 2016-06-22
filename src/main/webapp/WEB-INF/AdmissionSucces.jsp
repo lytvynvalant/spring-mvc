@@ -1,5 +1,6 @@
 <html>
     <body>
+       <h1> ${headerMessage}</h1>
         <h1>Congratulations!! The Engineering college has processed you Application form successfully</h1>
         <h2>${msg}</h2>
         <table>

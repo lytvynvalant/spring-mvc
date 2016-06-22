@@ -1,6 +1,7 @@
 package src.org.kolyan.studentadmissioncontroller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,16 @@ public class StudenAdmissionController {
     public ModelAndView getAdmissionForm() {
         ModelAndView modelAndView = new ModelAndView("AdmissionForm");
         return modelAndView;
+    }
+
+    /**
+     * THIS METHOD CALLING FIRST BEFORE ANY REQUEST HANDLED METHOD
+     *
+     * @param model is extended instance ModelAndView in every request handler
+     */
+    @ModelAttribute
+    public void addingCommonObjects(Model model) {
+        model.addAttribute("headerMessage", "This is headerMessage using @ModelAttribute");
     }
 
     @RequestMapping(value = "submitForm.html", method = RequestMethod.POST)

@@ -13,6 +13,19 @@
                     <td>Student Hobby: </td>
                     <td>${student1.getStudentHobby()}</td>
                 </tr>
+                <tr>
+                    <td>Student Mobile: </td>
+                    <td>${student1.getStudentMobile()}</td>
+                </tr>
+                <tr>
+                    <td>Student DOB: </td>
+                    <td>${student1.getStudentDOB()}</td>
+                </tr>
+                <tr>
+                    <td>Student Skills: </td>
+                    <td>${student1.getStudentSkills()}</td>
+                </tr>
+
             <tbody>
         <table>
     </body>

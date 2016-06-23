@@ -16,7 +16,8 @@
         <br/>
     </p>
     <p>
-        Student's DOB <input type="text" name="studentDOB">
+        <p style="color:red;">*Student's DOB value can't be empty<p>
+        Student's DOB <input type="text" name="studentDOB" value="2014/02/09">
         <br/>
     </p>
     <p>

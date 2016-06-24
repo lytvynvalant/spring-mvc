@@ -1,11 +1,14 @@
 package src.org.kolyan.studentadmissioncontroller;
 
+import org.hibernate.validator.constraints.Range;
+
 public class Address {
 
     private String country;
     private String city;
     private String street;
-    // if it field is empty will empty will be error
+
+    @Range(min = 1, max = 10)
     private int pincode;
 
 

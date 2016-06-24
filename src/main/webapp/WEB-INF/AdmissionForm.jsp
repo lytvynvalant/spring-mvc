@@ -1,7 +1,12 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <h1> ${headerMessage}</h1>
 <h1>Studen admission form for engineering courses</h1>
 <%-- action -> it is 'url' where will be submitted form
   post -> form's method --%>
+
+<%-- place for error stack --%>
+<form:errors path="student1.*"/>
+
 <form action="/spring_mvc/submitForm.html" method="post">
     <p>
         Student's name <input type="text" name="studentName">
@@ -41,7 +46,7 @@
                 <td>street: <input type="text" name="studentAddress.street"></td>
 
                 <p style="color:red;">*Pincode value can't be empty<p>
-                <td>pincode: <input type="text" name="studentAddress.pincode" value="0"></td>
+                <td>pincode: <input type="text" name="studentAddress.pincode"></td>
             </tr>
         </tbody>
     </table>

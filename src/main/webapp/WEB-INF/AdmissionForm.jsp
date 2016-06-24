@@ -28,5 +28,22 @@
         </select>
         <br/>
     </p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+               <%-- through a point specified fields and sub-entities --%>
+                <td>country: <input type="text" name="studentAddress.country"></td>
+                <td>city: <input type="text" name="studentAddress.city"></td>
+                <td>street: <input type="text" name="studentAddress.street"></td>
+
+                <p style="color:red;">*Pincode value can't be empty<p>
+                <td>pincode: <input type="text" name="studentAddress.pincode" value="0"></td>
+            </tr>
+        </tbody>
+    </table>
     <input type="submit" name="Submit this form be clicking here">
 </form>

@@ -28,5 +28,31 @@
 
             <tbody>
         <table>
+
+        <hr>
+
+        <table>
+            <tbody>
+
+                <%-- through a point specified fields and sub-entities --%>
+
+                <tr>
+                    <td>country: </td>
+                    <td>${student1.studentAddress.country}</td>
+                </tr>
+                <tr>
+                    <td>city: </td>
+                    <td>${student1.studentAddress.city}</td>
+                </tr>
+                <tr>
+                    <td>street: </td>
+                    <td>${student1.studentAddress.street}</td>
+                </tr>
+                <tr>
+                    <td>pincode: </td>
+                    <td>${student1.studentAddress.pincode}</td>
+                </tr>
+            <tbody>
+        <table>
     </body>
 </html>

@@ -2,10 +2,13 @@ package src.org.kolyan.studentadmissioncontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class StudenAdmissionController {
@@ -27,13 +30,19 @@ public class StudenAdmissionController {
         model.addAttribute("headerMessage", "This is headerMessage using @ModelAttribute");
     }
 
-    @RequestMapping(value = "submitForm.html", method = RequestMethod.POST)
     /**
      * @ModelAttribute -> matching data from request  field of Student
      * if field(fields) name of model 'Student' and parameter(parameters) name of query is equal
      * it(they) will be saving in in new instance 'model'
-     * */
-    public ModelAndView submitAdmissionForm(@ModelAttribute("student") Student student1) {
+     */
+    @RequestMapping(value = "submitForm.html", method = RequestMethod.POST)
+    public ModelAndView submitAdmissionForm(@Valid @ModelAttribute("student1") Student student1, BindingResult result) {
+
+        // if form not valid return new empty form
+        if (result.hasErrors()) {
+            return new ModelAndView("AdmissionForm");
+        }
+
         ModelAndView modelAndView = new ModelAndView("AdmissionSucces");
         modelAndView.addObject("msg", "Details submitted by you: ");
         modelAndView.addObject("student1", student1);

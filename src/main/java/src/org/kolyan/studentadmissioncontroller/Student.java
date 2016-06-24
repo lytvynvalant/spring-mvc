@@ -1,5 +1,6 @@
 package src.org.kolyan.studentadmissioncontroller;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,6 +13,9 @@ public class Student {
     private Date studentDOB;
     private ArrayList<String> studentSkills;
 
+    // if in model have nested models this field must have this annotation
+    @Valid
+    private Address studentAddress;
 
     public String getStudentName() {
         return studentName;
@@ -51,5 +55,13 @@ public class Student {
 
     public void setStudentSkills(ArrayList<String> studentSkills) {
         this.studentSkills = studentSkills;
+    }
+
+    public Address getStudentAddress() {
+        return studentAddress;
+    }
+
+    public void setStudentAddress(Address studentAddress) {
+        this.studentAddress = studentAddress;
     }
 }

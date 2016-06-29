@@ -15,9 +15,16 @@ import javax.validation.Valid;
 @Controller
 public class StudenAdmissionController {
 
+    // it is Spring validator
+    // called before saving data
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-
+        // registration custom editors
+        // first param -> type of param
+        // second param -> param namae
+        // third param -> class witch extend 'PropertyEditorSupport.class'
+        binder.registerCustomEditor(Integer.class, "studentAddress.pincode", new AddressPincodeEditorClass());
+        binder.registerCustomEditor(String.class, "studentName", new StudentNameEditorClass());
     }
 
     // url "http://localhost:8080/spring_mvc/addmissionForm.html"

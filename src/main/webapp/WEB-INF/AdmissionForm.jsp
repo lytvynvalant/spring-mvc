@@ -8,6 +8,7 @@
 <form:errors path="student1.*"/>
 
 <form action="/spring_mvc/submitForm.html" method="post">
+    <p style="color:red">"Student's" name and "Pincode" validate before saving!!!</p>
     <p>
         Student's name <input type="text" name="studentName">
         <br/>
@@ -44,8 +45,6 @@
                 <td>country: <input type="text" name="studentAddress.country"></td>
                 <td>city: <input type="text" name="studentAddress.city"></td>
                 <td>street: <input type="text" name="studentAddress.street"></td>
-
-                <p style="color:red;">*Pincode value can't be empty<p>
                 <td>pincode: <input type="text" name="studentAddress.pincode"></td>
             </tr>
         </tbody>

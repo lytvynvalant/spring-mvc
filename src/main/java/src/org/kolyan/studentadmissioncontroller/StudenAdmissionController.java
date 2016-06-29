@@ -1,6 +1,5 @@
 package src.org.kolyan.studentadmissioncontroller;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,20 +11,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Controller
 public class StudenAdmissionController {
 
+    // it is Spring validator
+    // called before saving data
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        // change of form will not be saving in model
-        binder.setDisallowedFields(new String [] {"studentName"});
-
-        // define custom format for field with date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy****MM****dd");
-        binder.registerCustomEditor(Date.class, "studentDOB", new CustomDateEditor(dateFormat,false));
+        // registration custom editors
+        // first param -> type of param
+        // second param -> param namae
+        // third param -> class witch extend 'PropertyEditorSupport.class'
+        binder.registerCustomEditor(Integer.class, "studentAddress.pincode", new AddressPincodeEditorClass());
+        binder.registerCustomEditor(String.class, "studentName", new StudentNameEditorClass());
     }
 
     // url "http://localhost:8080/spring_mvc/addmissionForm.html"
@@ -63,6 +62,5 @@ public class StudenAdmissionController {
         modelAndView.addObject("student1", student1);
         return modelAndView;
     }
-
 
 }
